@@ -3,11 +3,19 @@
 The dashboard is the operational half of this analysis: the report answers the
 question once, the dashboard lets the retention team re-ask it every month.
 
-Built in Tableau Public. The extracts in `extracts/` are written by
-`make analysis` and are the only inputs — no manual reshaping between the
-pipeline and the workbook.
+The extracts in `extracts/` are written by `make analysis` and are the only
+inputs — no manual reshaping between the pipeline and the dashboard.
 
-**Published:** _add the Tableau Public link here once published_
+**Live dashboard:** https://lohandesilva.github.io/lohan-desilva-portfolio/dashboards/churn.html
+
+The dashboard is built and hosted directly rather than through a BI tool, so it
+has no third-party account behind it and no refresh to keep alive: it reads the
+same extracts this pipeline writes, and the page is a single self-contained file.
+
+The Tableau build below is kept as a specification. It is the same data model and
+the same measure definitions, so the workbook can be rebuilt in Tableau or, with
+the DAX equivalents in `calculated-fields.md`, in Power BI on a Windows machine.
+
 
 ---
 
@@ -109,11 +117,10 @@ then re-upload. If the workbook is being refreshed monthly, keep the file names
 stable — Tableau Public re-maps the data source on every filename change and
 silently breaks calculated fields that reference the old name.
 
-## Why Tableau and not Power BI
+## Why not Power BI
 
 Power BI Desktop does not run on macOS, and browser authoring in the Power BI
-Service cannot produce a publicly shareable report on the free tier. Tableau
-Public publishes to an open URL, which is what a portfolio dashboard needs. The
+Service cannot produce a publicly shareable report on the free tier. The
 measure definitions in `calculated-fields.md` include the DAX equivalents, so the
 same model can be rebuilt in Power BI on a Windows machine without redoing the
 thinking.
